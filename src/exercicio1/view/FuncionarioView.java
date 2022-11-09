@@ -16,10 +16,9 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     
     FuncionarioController funcionarioController = new FuncionarioController();
+    
+    private boolean isCadastrando = true;
 
-    private boolean isExibindo;
-    private boolean isCadastrando;
-    private int index = 0;
     
     private void limpaForm(){
         this.txtNome.setText("");
@@ -51,6 +50,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -63,11 +63,11 @@ public class FuncionarioView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        btnCadastrar1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExibir = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
+
+        btnAnterior.setText("Proximo");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,19 +120,10 @@ public class FuncionarioView extends javax.swing.JFrame {
 
         jLabel6.setText("Novo Funcionario");
 
-        btnCadastrar1.setText("Exibir Funcionarios");
-        btnCadastrar1.addActionListener(new java.awt.event.ActionListener() {
+        btnExibir.setText("Exibir Funcionarios");
+        btnExibir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrar1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Proximo");
-
-        jButton3.setText("Anterior");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnExibirActionPerformed(evt);
             }
         });
 
@@ -142,36 +133,34 @@ public class FuncionarioView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtDtNascimento)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDtNascimento))
+                        .addGap(54, 54, 54))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(54, 54, 54))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnExibir, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(151, 151, 151)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,12 +194,8 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
-                    .addComponent(btnCadastrar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(10, 10, 10))
+                    .addComponent(btnExibir))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -237,36 +222,28 @@ public class FuncionarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDtNascimentoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        if(!isCadastrando){
+        if(isCadastrando){    
+            funcionarioController.novoFuncionario(this.txtNome.getText(), 
+                        this.txtSobrenome.getText(), this.txtCpf.getText(), 
+                        this.txtRg.getText(), this.txtDtNascimento.getText());
+                limpaForm();
+        } else {
             isCadastrando = true;
             JOptionPane.showMessageDialog(null, "Pronto para cadastrar");
             limpaForm();
-        } else {
-            funcionarioController.novoFuncionario(this.txtNome.getText(), 
-                    this.txtSobrenome.getText(), this.txtCpf.getText(), 
-                    this.txtRg.getText(), this.txtDtNascimento.getText());
-            limpaForm();
-        } 
+        }
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
-        isExibindo = true;
-        isCadastrando = false;      
-        if(funcionarioController.exibeFuncionario(index) != null){
-            FuncionarioModel funcionario = funcionarioController.exibeFuncionario(index);
-            showDate(funcionario);
+    private void btnExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExibirActionPerformed
+        isCadastrando = false;
+        if(funcionarioController.exibeFuncionario() != null && !isCadastrando){
+            showDate(funcionarioController.exibeFuncionario());
         } else {
+            limpaForm();
             JOptionPane.showMessageDialog(null, "Não temos funcionarios cadastrados");
         }
-    }//GEN-LAST:event_btnCadastrar1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(funcionarioController != null) {
-            funcionarioController.exibeFuncionario(--index);
-        } else {
-            JOptionPane.showMessageDialog(null, "Esse é o primeiro funcionario");
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnExibirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,11 +284,10 @@ public class FuncionarioView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCadastrar1;
+    private javax.swing.JButton btnExibir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

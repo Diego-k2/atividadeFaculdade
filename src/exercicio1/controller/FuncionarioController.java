@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 public class FuncionarioController {
     
     FuncionarioModel funcionario = new FuncionarioModel();
-    List<FuncionarioModel> funcionarios = new ArrayList<>();
     
     public void novoFuncionario(String nome, String sobrenome, String cpf, String
             rg, String dtNascimento){
@@ -22,8 +21,7 @@ public class FuncionarioController {
             funcionario.setSobrenome(sobrenome);
             funcionario.setCpf(cpf);
             funcionario.setDtNascimento(dtNascimento);
-            funcionario.setRg(rg);
-            funcionarios.add(funcionario);
+            funcionario.setRg(rg);;
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
@@ -32,18 +30,11 @@ public class FuncionarioController {
     }
     
     
-    public FuncionarioModel exibeFuncionario(int index){
+    public FuncionarioModel exibeFuncionario(){
         
-        if(!funcionarios.isEmpty() || index <= funcionarios.size() - 1){
-            FuncionarioModel f = new FuncionarioModel();
-            f.setNome(funcionarios.get(index).getNome());
-            f.setSobrenome(funcionarios.get(index).getSobrenome());
-            f.setCpf(funcionarios.get(index).getCpf());
-            f.setRg(funcionarios.get(index).getRg());
-            f.setDtNascimento(funcionarios.get(index).getDtNascimento());
-            return f;
-        }
-        
+        if(funcionario != null){
+            return funcionario;
+        } 
         return null;
     } 
 }
